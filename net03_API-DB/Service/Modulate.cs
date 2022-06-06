@@ -18,10 +18,10 @@ namespace net03_API_DB.Service
         }
 
 
-        public IEnumerable<Car> GetCarsByColor(string color) //[GET]
+        public IEnumerable<Car> GetCarsByColor(string color) //[GET]++
         {
-            var byColor = _carList.Where(car => car.Color == color);
-            return byColor; // XX
+            var selectorByColor = _carList.Where(car => car.Color == color);
+            return selectorByColor; // XX
         }
 
         public IEnumerable<Car> UpdateCar(Car car) //[PUT}
