@@ -1,5 +1,6 @@
 ﻿using net03_API_DB.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace net03_API_DB.Service
 {
@@ -17,13 +18,13 @@ namespace net03_API_DB.Service
         }
 
 
-
-        public IEnumerable<Car> UpdateCar(Car car) //[PUT}
+        public IEnumerable<Car> GetCarsByColor(string color) //[GET]
         {
-            return _carList; // XX
+            var byColor = _carList.Where(car => car.Color == color);
+            return byColor; // XX
         }
 
-        public IEnumerable<Car> GetCarsByColor(Car car) //[GET]
+        public IEnumerable<Car> UpdateCar(Car car) //[PUT}
         {
             return _carList; // XX
         }
