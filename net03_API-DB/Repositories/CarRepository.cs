@@ -48,13 +48,16 @@ namespace net03_API_DB.Repositories
             var carSelectorToUpdate = _db.Cars.Single(car => car.Id == id);
             carSelectorToUpdate.Name = carDto.Name;
             carSelectorToUpdate.Color = carDto.Color;
+            _db.Cars.Add(carSelectorToUpdate);
+            _db.SaveChanges();
             return _db.Cars.ToList();
         }
 
         public IEnumerable<Car> DeleteCar(Guid id) //[DELETE]
         {
             var selectorDelete = _db.Cars.First(car => car.Id == id);
-            _carList.Remove(selectorDelete);
+            _db.Cars.Remove(selectorDelete);
+            _db.SaveChanges();
             return _db.Cars.ToList();
         }
 
