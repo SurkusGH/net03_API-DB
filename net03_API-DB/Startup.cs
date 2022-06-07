@@ -36,7 +36,7 @@ namespace net03_API_DB
 
             services.AddCors();
 
-            services.AddSingleton<IModulate, Modulate>();
+            services.AddSingleton<ICarRepository, CarRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

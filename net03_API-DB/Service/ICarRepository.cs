@@ -4,14 +4,16 @@ using System.Collections.Generic;
 
 namespace net03_API_DB.Service
 {
-    public interface IModulate
+    public interface ICarRepository
     {
-        IEnumerable<Car> AddCar(Car car); //[POST}
-        IEnumerable<Car> UpdateCar(Car car, Guid id); //[PUT}
-
         IEnumerable<Car> GetAllCars(); //[GET]
+
         IEnumerable<Car> GetCarsByColor(string color); //[GET]
 
-        IEnumerable<Car> DeleteCar(Guid id); //[GET]
+        IEnumerable<Car> AddNewCar(CarDto carDto); //[POST}
+        
+        IEnumerable<Car> UpdateCar(Guid id, CarDto carDto); //[PUT}
+
+        IEnumerable<Car> DeleteCar(Guid id); //[DELETE]
     }
 }

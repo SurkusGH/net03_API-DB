@@ -10,43 +10,62 @@ namespace net03_API_DB.Controllers
     [Route("[controller]")]
     public class CarController : ControllerBase
     {
-        private readonly IModulate _modulator;
+        private readonly ICarRepository _carRepo;
 
-        public CarController(IModulate list)
+        public CarController(ICarRepository list)
         {
-            _modulator = list;
+            _carRepo = list;
         }
 
-        [HttpPost("AddCar")] //[POST}
-        public IEnumerable<Car> AddCar([FromBody] Car car)
-        {
-            return _modulator.AddCar(car);
-        }
-
+        #region GetAllCars – [GET]
 
         [HttpGet("GetAllCars")]
-        public IEnumerable<Car> GetAllCars() //[GET]
+        public IEnumerable<Car> GetAllCars()
         {
-            return _modulator.GetAllCars();
+            return _carRepo.GetAllCars();
         }
+
+        #endregion
+
+
+        #region GetCarsByColor - [GET]
 
         [HttpGet("GetCarsByColor")]
-        public IEnumerable<Car> GetCarsByColor(string color) //[GET]
+        public IEnumerable<Car> GetCarsByColor([FromQueryAttribute] string color)
         {
-            return _modulator.GetCarsByColor(color);
+            return _carRepo.GetCarsByColor(color);
         }
+
+        #endregion
+
+        #region AddNewCar – [POST]
+
+        [HttpPost("AddNewCar")]
+        public IEnumerable<Car> AddNewCar(CarDto carDto)
+        {
+            return _carRepo.AddNewCar(carDto);
+        }
+
+        #endregion
+
+        #region UpdateCar – [PUT]
 
         [HttpPut("UpdateCar")]
-        public IEnumerable<Car> UpdateCar(Car car, Guid id)
+        public IEnumerable<Car> UpdateCar([FromQueryAttribute]Guid id, CarDto carDto)
         {
-            return _modulator.UpdateCar(car, id);
+            return _carRepo.UpdateCar(id, carDto);
         }
+
+        #endregion
+
+        #region DeleteCar – [DELETE]
 
         [HttpDelete("DeleteCar")]
-        public IEnumerable<Car> DeleteCar(Guid id) //[Delete]
+        public IEnumerable<Car> DeleteCar(Guid id)
         {
-            return _modulator.DeleteCar(id);
+            return _carRepo.DeleteCar(id);
         }
-    }
 
+        #endregion
+    }
 }
