@@ -33,7 +33,7 @@ namespace net03_API_DB.Repositories
             var car = new Car
             {
                 Id = Guid.NewGuid(),
-                Name = carDto.Name,
+                Model = carDto.Name,
                 Color = carDto.Color
             };
 
@@ -46,7 +46,7 @@ namespace net03_API_DB.Repositories
         public IEnumerable<Car> UpdateCar(Guid id, CarDto carDto) //[PUT]
         {
             var carSelectorToUpdate = _db.Cars.Single(car => car.Id == id);
-            carSelectorToUpdate.Name = carDto.Name;
+            carSelectorToUpdate.Model = carDto.Name;
             carSelectorToUpdate.Color = carDto.Color;
             _db.Cars.Update(carSelectorToUpdate);
             _db.SaveChanges();

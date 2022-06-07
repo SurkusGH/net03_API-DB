@@ -10,8 +10,8 @@ using net03_API_DB.DataAccess;
 namespace net03_API_DB.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220607182124_CarTable")]
-    partial class CarTable
+    [Migration("20220607183839_CarModelToDB")]
+    partial class CarModelToDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,7 +30,7 @@ namespace net03_API_DB.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

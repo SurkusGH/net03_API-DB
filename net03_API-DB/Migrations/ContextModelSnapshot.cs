@@ -28,7 +28,7 @@ namespace net03_API_DB.Migrations
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
