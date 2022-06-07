@@ -48,7 +48,7 @@ namespace net03_API_DB.Repositories
             var carSelectorToUpdate = _db.Cars.Single(car => car.Id == id);
             carSelectorToUpdate.Name = carDto.Name;
             carSelectorToUpdate.Color = carDto.Color;
-            _db.Cars.Add(carSelectorToUpdate);
+            _db.Cars.Update(carSelectorToUpdate);
             _db.SaveChanges();
             return _db.Cars.ToList();
         }
