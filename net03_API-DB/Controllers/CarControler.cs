@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using net03_API_DB.Models;
-using net03_API_DB.Service;
+using net03_API_DB.Repositories;
 using System;
 using System.Collections.Generic;
 
@@ -26,7 +26,6 @@ namespace net03_API_DB.Controllers
         }
 
         #endregion
-
 
         #region GetCarsByColor - [GET]
 

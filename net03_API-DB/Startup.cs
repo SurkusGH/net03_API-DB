@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using net03_API_DB.Service;
+using net03_API_DB.DataAccess;
+using net03_API_DB.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,9 +36,13 @@ namespace net03_API_DB
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "net03_API_DB", Version = "v1" });
             });
 
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("Database")));
+
             services.AddCors();
 
-            services.AddSingleton<ICarRepository, CarRepository>();
+            services.AddScoped<ICarRepository, CarRepository>();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
